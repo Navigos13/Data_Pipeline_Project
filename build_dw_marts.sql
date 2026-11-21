@@ -13,3 +13,10 @@
 
 -- Step 4: Build the skills mart for analytics
 .read 4_create_skills_mart.sql
+
+
+-- Step 5: Build the priority mart for analytics
+.read 5_create_priority_mart.sql
+
+-- Step 6: Update the priority mart for analytics
+.read 6_update_priority_mart.sql
