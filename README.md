@@ -8,14 +8,14 @@ An end-to-end SQL data warehouse and analytics mart pipeline built with **DuckDB
 
 
 ### Pipeline & Data Flow
-![Pipeline Architecture](Resources\Assets\1_2_Project2_Data_Pipeline.png)
+![Pipeline Architecture](Resources/Assets/1_2_Project2_Data_Pipeline.png)
 
 ### Dimensional Schema & Data Marts
-![Star Schema and Data Marts](Resources\Assets\1_2_Flat_Mart.png)
+![Flat Mart](Resources/Assets/1_2_Flat_Mart.png)
 
-![Star Schema and Data Marts](Resources\Assets\1_2_Skills_Mart.png)
+![Skills Mart](Resources/Assets/1_2_Skills_Mart.png)
 
-![Star Schema and Data Marts](Resources\Assets\1_2_Priority_Mart.png)
+![Priority Mart](Resources/Assets/1_2_Priority_Mart.png)
 
 ---
 
