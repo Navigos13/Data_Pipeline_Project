@@ -11,9 +11,20 @@ An end-to-end SQL data warehouse and analytics mart pipeline built with **DuckDB
 ![Pipeline Architecture](Resources/Assets/1_2_Project2_Data_Pipeline.png)
 
 ### Dimensional Schema & Data Marts
+
+### 📊 Data Marts Overview
+
+* **`flat_mart`:** Denormalized analytical layer built for fast filtering and broad querying without repetitive joins across base tables.
+
+
 ![Flat Mart](Resources/Assets/1_2_Flat_Mart.png)
 
+* **`skills_mart`:** Aggregated skill-and-time mart designed to analyze skill demand and trends cleanly across time buckets without double-counting.
+
 ![Skills Mart](Resources/Assets/1_2_Skills_Mart.png)
+
+* **`priority_mart`:** Focused mart for priority flags (`remote`, `health_insurance`, `no_degree`) and key attributes, maintained with incremental `MERGE` (`INSERT`, `UPDATE`, `DELETE`) updates.
+
 
 ![Priority Mart](Resources/Assets/1_2_Priority_Mart.png)
 
