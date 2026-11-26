@@ -78,8 +78,38 @@ An end-to-end SQL data warehouse and analytics mart pipeline built with **DuckDB
 ---
 
 ## ▶️ How to Run
+### Prerequisites
+- **DuckDB CLI** installed on your system (with internet access so DuckDB can load the `httpfs` extension and read remote CSV files from Google Cloud Storage).
+- **Git** installed to clone the repository.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Navigos13/Data_Pipeline_Project.git
+cd Data_Pipeline_Project
+```
+### 2. Run the Full Pipeline
+Execute the master orchestration script to create the warehouse schema, ingest remote CSV data, and build the data marts in a local DuckDB database file (`warehouse.duckdb`):
+```bash
+duckdb warehouse.duckdb < build_dw_marts.sql
+```
+### 3. Optional: Run Individual Steps or Incremental Updates
+You can also run specific stage scripts directly against `warehouse.duckdb` if you are debugging or testing a single layer:
+```bash
+# Create warehouse tables
+duckdb warehouse.duckdb < 1_create_tables_dw.sql
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/Navigos13/Data_Pipeline_Project.git](https://github.com/Navigos13/Data_Pipeline_Project.git)
-   cd Data_Pipeline_Project
+# Load source data via httpfs
+duckdb warehouse.duckdb < 2_load_schema_dw.sql
+
+# Build individual marts
+duckdb warehouse.duckdb < 3_create_flat_mart.sql
+duckdb warehouse.duckdb < 4_create_skills_mart.sql
+duckdb warehouse.duckdb < 5_create_priority_mart.sql
+
+# Apply incremental MERGE updates to priority_mart
+duckdb warehouse.duckdb < 6_update_priority_mart.sql
+```
+### 4. Verify the Built Tables & Marts
+Open DuckDB and inspect the generated schemas and tables:
+```bash
+duckdb warehouse.duckdb -c "SHOW ALL TABLES;"
+```
