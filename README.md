@@ -1,3 +1,38 @@
+# Data Pipeline Project (DuckDB & SQL)
+
+An end-to-end SQL data warehouse and analytics mart pipeline built with **DuckDB**, loading remote CSV datasets from Google Cloud Storage (GCS) and transforming them into star-schema tables and domain-specific data marts (`flat_mart`, `skills_mart`, `priority_mart`, and `company_mart`).
+
+---
+
+## 🗺️ Architecture & Visuals
+
+
+### Pipeline & Data Flow
+![Pipeline Architecture](Resources\Assets\1_2_Project2_Data_Pipeline.png)
+
+### Dimensional Schema & Data Marts
+![Star Schema and Data Marts](Resources\Assets\1_2_Flat_Mart.png)
+
+![Star Schema and Data Marts](Resources\Assets\1_2_Skills_Mart.png)
+
+![Star Schema and Data Marts](Resources\Assets\1_2_Priority_Mart.png)
+
+---
+
+## 📁 Repository Structure
+
+| File | Purpose |
+| :--- | :--- |
+| `1_create_tables_dw.sql` | Creates core data warehouse tables and defines explicit column types |
+| `2_load_schema_dw.sql` | Loads raw CSV data from GCS into warehouse tables via `httpfs` |
+| `3_create_flat_mart.sql` | Builds the denormalized `flat_mart` layer for broad analytical querying |
+| `4_create_skills_mart.sql` | Builds `skills_mart` aggregated at the skill and time-bucket grain |
+| `5_create_priority_mart.sql` | Builds `priority_mart` focused on high-priority job attributes and flags |
+| `6_update_priority_mart.sql` | Applies incremental `MERGE` updates (`INSERT`, `UPDATE`, `DELETE`) to `priority_mart` |
+| `build_dw_marts.sql` | Master orchestration script running the pipeline end-to-end |
+
+---
+
 ## 💻 Data Engineering Skills Demonstrated
 
 ### 🔄 ETL Pipeline Development
@@ -28,3 +63,12 @@
 * **Strict Type Safety:** Enforced explicit schema data types (`VARCHAR`, `INTEGER`, `DOUBLE`, `BOOLEAN`, `TIMESTAMP`) across all layers.
 * **Logical Schema Isolation:** Segregated data marts into dedicated schemas (`flat_mart`, `skills_mart`, `priority_mart`, `company_mart`) for clean domain boundaries.
 * **Operational Observability:** Structured script execution featuring clear status logging, progress reporting, and error handling.
+
+---
+
+## ▶️ How to Run
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Navigos13/Data_Pipeline_Project.git](https://github.com/Navigos13/Data_Pipeline_Project.git)
+   cd Data_Pipeline_Project
